@@ -7,15 +7,15 @@ node('slaves'){
 
     stage('Deploy'){
         if (env.BRANCH_NAME == 'master') {
-            sh "aws s3 cp --recursive . s3://${add-2019-imdb-demo}/production/"
+            sh "aws s3 cp --recursive . s3://${bucket}/production/"
         }
         
         if (env.BRANCH_NAME == 'preprod') {
-            sh "aws s3 cp --recursive . s3://${add-2019-imdb-demo}/staging/"
+            sh "aws s3 cp --recursive . s3://${bucket}/staging/"
         }
         
         if (env.BRANCH_NAME == 'develop') {
-            sh "aws s3 cp --recursive . s3://${add-2019-imdb-demo}/sandbox/"
+            sh "aws s3 cp --recursive . s3://${bucket}/sandbox/"
         }
     }
 }
